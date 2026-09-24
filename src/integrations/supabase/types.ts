@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      addresses: {
+        Row: {
+          area: string
+          city: string
+          created_at: string
+          customer_id: string
+          formatted_address: string
+          house: string
+          id: string
+          is_default: boolean
+          label: string
+          landmark: string | null
+          latitude: number | null
+          longitude: number | null
+          pincode: string
+          state: string
+          street: string
+          updated_at: string
+        }
+        Insert: {
+          area: string
+          city: string
+          created_at?: string
+          customer_id: string
+          formatted_address: string
+          house: string
+          id?: string
+          is_default?: boolean
+          label: string
+          landmark?: string | null
+          latitude?: number | null
+          longitude?: number | null
+          pincode: string
+          state: string
+          street: string
+          updated_at?: string
+        }
+        Update: {
+          area?: string
+          city?: string
+          created_at?: string
+          customer_id?: string
+          formatted_address?: string
+          house?: string
+          id?: string
+          is_default?: boolean
+          label?: string
+          landmark?: string | null
+          latitude?: number | null
+          longitude?: number | null
+          pincode?: string
+          state?: string
+          street?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          mobile: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          mobile?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          mobile?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
