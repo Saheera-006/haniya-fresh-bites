@@ -1,0 +1,9 @@
+import { Link } from "@tanstack/react-router";
+import { Minus, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useStore } from "@/context/store-context";
+import type { Product } from "@/types/store";
+export function ProductCard({product}:{product:Product}){
+ const {cart,add,change}=useStore();const v=product.variants[0];const q=cart.find(x=>x.productId===product.id&&x.variantId===v.id)?.quantity??0;
+ return <article className="group overflow-hidden rounded-lg border border-border bg-card"><Link to="/products/$productId" params={{productId:product.id}} className="block aspect-[4/3] overflow-hidden bg-muted"><img loading="lazy" width={912} height={912} src={product.image} alt={product.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.025]"/></Link><div className="p-3"><div className="mb-1 flex items-start justify-between gap-2"><Link to="/products/$productId" params={{productId:product.id}} className="font-bold leading-tight">{product.name}</Link><span className="shrink-0 text-[10px] font-bold text-emerald-700 dark:text-emerald-400">حلال HALAL</span></div><p className="line-clamp-2 min-h-10 text-xs leading-5 text-muted-foreground">{product.description}</p><div className="mt-3 flex items-end justify-between"><div><span className="block text-xs text-muted-foreground">{v.weight}</span><strong className="text-lg">₹{v.price}</strong></div>{q===0?<Button size="sm" onClick={()=>add(product.id,v.id)}>ADD</Button>:<div className="flex h-9 items-center rounded-md border border-primary text-primary"><Button variant="ghost" size="icon" className="h-9 min-h-9 w-9" onClick={()=>change(product.id,v.id,-1)}><Minus/></Button><b className="w-7 text-center text-sm">{q}</b><Button variant="ghost" size="icon" className="h-9 min-h-9 w-9" onClick={()=>change(product.id,v.id,1)}><Plus/></Button></div>}</div></div></article>
+}
