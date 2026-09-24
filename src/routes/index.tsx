@@ -1,24 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from "@tanstack/react-router";
+import logo from "@/assets/haniya-logo.png.asset.json";
+import hero from "@/assets/haniya-hero.jpg";
+import { AuthPanel } from "@/components/store/auth-panel";
+export const Route=createFileRoute("/")({head:()=>({meta:[{title:"Login — Haniya Proteins"},{name:"description",content:"Sign in or continue as a guest to shop fresh chicken from Haniya Proteins."},{property:"og:title",content:"Haniya Proteins Customer Login"},{property:"og:description",content:"Fresh chicken, made for your kitchen."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:LoginPage});
+function LoginPage(){return <main className="relative min-h-screen bg-background"><Link to="/home" className="absolute right-4 top-4 z-20 rounded-md px-3 py-3 text-sm font-bold text-primary hover:bg-primary/10 md:right-8 md:top-7">Continue without login →</Link><div className="grid min-h-screen lg:grid-cols-[1.08fr_.92fr]"><section className="relative hidden overflow-hidden lg:block"><img src={hero} width={1536} height={912} alt="Fresh chicken cuts" className="absolute inset-0 h-full w-full object-cover"/><div className="absolute inset-0 bg-foreground/55"/><div className="relative z-10 flex h-full flex-col justify-end p-14 text-primary-foreground"><img src={logo.url} alt="Haniya Proteins" className="mb-8 size-48 object-contain"/><h2 className="font-display text-6xl uppercase">Haniya Proteins</h2><p className="mt-3 text-xl">Fresh Chicken, Made for Your Kitchen.</p></div></section><section className="flex items-center justify-center px-5 py-24 md:px-12"><div className="w-full max-w-md"><div className="mb-8 text-center lg:hidden"><img src={logo.url} alt="Haniya Proteins" className="mx-auto size-36 object-contain"/><p className="font-display text-3xl uppercase">Haniya Proteins</p><p className="mt-1 text-sm text-muted-foreground">Fresh Chicken, Made for Your Kitchen.</p></div><AuthPanel/></div></section></div></main>}
