@@ -34,7 +34,7 @@ function ProductDetails() {
         <p className="text-xs font-bold uppercase text-primary">{product.category}</p>
         <h1 className="mt-1 font-display text-4xl uppercase">{product.name}</h1>
         <p className="mt-2 text-muted-foreground">{product.description}</p>
-        {product.halal && <p className="mt-3 inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-sm font-bold"><span lang="ar">حلال</span> HALAL</p>}
+        {product.halal && <p className="mt-3 inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-sm font-bold"><span lang="ar" dir="rtl" className="text-lg text-emerald-700 dark:text-emerald-400">حلال</span></p>}
         <fieldset className="mt-6"><legend className="mb-2 text-sm font-bold">Choose weight</legend><div className="flex flex-wrap gap-2">
           {product.variants.map(x => <button key={x.id} onClick={() => setVid(x.id)} aria-pressed={x.id === vid} className={`min-h-11 rounded-md border px-4 text-sm font-semibold ${x.id === vid ? "border-primary bg-primary/10 text-primary" : "border-border bg-card"}`}>{x.weight} · ₹{x.price}</button>)}
         </div></fieldset>
