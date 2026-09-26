@@ -1,4 +1,4 @@
-# Haniya Fresh Bites
+# Haniya Proteins
 
 HANIYA PROTEINS — CUSTOMER FRONTEND
 
